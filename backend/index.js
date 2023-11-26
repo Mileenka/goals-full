@@ -2,6 +2,9 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
+import 'colors'
+
+import goalRoutes from './routes/goalRoutes.js';
 
 import connectToDB from './config/db.js';
 
@@ -27,6 +30,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // routes
+
+app.use('/api/goals', goalRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
